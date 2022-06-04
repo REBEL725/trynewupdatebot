@@ -1,5 +1,3 @@
-# 🙈 Give me ⭐️ before kanging code
-# © @Mr_Agora 🌚
 
 import requests
 url = "https://iamai.p.rapidapi.com/ask"
