@@ -3,8 +3,14 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import scoped_session, sessionmaker
 
+DB_URI = os.environ.get("DATABASE_URL", None)
 
 def start() -> scoped_session:
+    db_url = (
+        DB_URI.replace("postgres://", "postgresql://")
+        if "postgres://" in DB_URI
+        else DB_URI
+    )
     engine = create_engine(DB_URI, client_encoding="utf8")
     BASE.metadata.bind = engine
     BASE.metadata.create_all(engine)
